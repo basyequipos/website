@@ -1,0 +1,38 @@
+---
+import FacebookIcon from "../icons/facebook.svg";
+
+const icons = {
+    facebook: FacebookIcon,
+};
+
+interface SocialMediaItem {
+    label: string;
+    icon: keyof typeof icons;
+    href: string;
+}
+
+const socialMediaItems: SocialMediaItem[] = [
+    {
+        label: "Facebook",
+        icon: "facebook",
+        href: "https://www.facebook.com/people/Basyequipos/100046925036264/",
+    },
+];
+---
+
+<div>
+    <ul>
+        {
+            socialMediaItems.map((item) => {
+                const Icon = icons[item.icon];
+
+                return (
+                    <a href={item.href}>
+                        <Icon />
+                        <span>{item.label}</span>
+                    </a>
+                );
+            })
+        }
+    </ul>
+</div>
