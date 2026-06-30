@@ -1,0 +1,67 @@
+---
+import mailIcon from "../icons/facebook.svg";
+import phoneIcon from "../icons/facebook.svg";
+import smartphoneIcon from "../icons/facebook.svg";
+import mapPinIcon from "../icons/facebook.svg";
+
+const icons = {
+    mail: mailIcon,
+    phone: phoneIcon,
+    smartphone: smartphoneIcon,
+    mapPin: mapPinIcon,
+};
+
+interface ContactItem {
+    label: string;
+    icon: keyof typeof icons;
+    content: string | string[];
+}
+
+const contactItems: ContactItem[] = [
+    {
+        label: "Correo",
+        icon: "mail",
+        content: "clientes@basyequipos.com",
+    },
+    {
+        label: "Teléfono",
+        icon: "phone",
+        content: ["+52 662 XXX XXXX", "+52 662 YYY YYYY"],
+    },
+    {
+        label: "Celular",
+        icon: "smartphone",
+        content: "+52 662 ZZZ ZZZZ",
+    },
+    {
+        label: "Ubicación",
+        icon: "mapPin",
+        content: "Periférico Norte 415, Luis Encinas, 83138 Hermosillo, Sonora",
+    },
+];
+---
+
+<div>
+    <dl>
+        {
+            contactItems.map((item) => {
+                const Icon = icons[item.icon];
+
+                return (
+                    <div>
+                        <dt>
+                            <Icon />
+                            {item.label}
+                        </dt>
+
+                        {Array.isArray(item.content) ? (
+                            item.content.map((value) => <dd>{value}</dd>)
+                        ) : (
+                            <dd>{item.content}</dd>
+                        )}
+                    </div>
+                );
+            })
+        }
+    </dl>
+</div>
