@@ -1,8 +1,8 @@
 ---
-import mailIcon from "../icons/mail.svg";
-import phoneIcon from "../icons/phone.svg";
-import smartphoneIcon from "../icons/smartphone.svg";
-import mapPinIcon from "../icons/map-pin.svg";
+import mailIcon from "../assets/icons/mail.svg";
+import phoneIcon from "../assets/icons/phone.svg";
+import smartphoneIcon from "../assets/icons/smartphone.svg";
+import mapPinIcon from "../assets/icons/map-pin.svg";
 
 const icons = {
     mail: mailIcon,
@@ -39,9 +39,15 @@ const contactItems: ContactItem[] = [
         content: "Periférico Norte 415, Luis Encinas, 83138 Hermosillo, Sonora",
     },
 ];
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<div>
+<div class={className}>
     <dl>
         {
             contactItems.map((item) => {
@@ -65,3 +71,34 @@ const contactItems: ContactItem[] = [
         }
     </dl>
 </div>
+
+<style>
+    svg {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+
+    dl > div {
+        display: grid;
+        grid-template-columns: 24px 1fr;
+        column-gap: 0.75rem;
+        row-gap: 0.25rem;
+    }
+
+    dt {
+        grid-column: 1 / -1;
+
+        display: grid;
+        grid-template-columns: subgrid;
+        align-items: center;
+
+        margin: 0;
+        font-weight: 600;
+    }
+
+    dd {
+        grid-column: 2;
+
+        margin: 0;
+    }
+</style>
