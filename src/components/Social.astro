@@ -1,5 +1,5 @@
 ---
-import FacebookIcon from "../icons/facebook.svg";
+import FacebookIcon from "../assets/icons/facebook.svg";
 
 const icons = {
     facebook: FacebookIcon,
@@ -16,23 +16,56 @@ const socialMediaItems: SocialMediaItem[] = [
         label: "Facebook",
         icon: "facebook",
         href: "https://www.facebook.com/people/Basyequipos/100046925036264/",
-    },
+    }
 ];
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<div>
+<div class={className}>
     <ul>
         {
             socialMediaItems.map((item) => {
                 const Icon = icons[item.icon];
 
                 return (
-                    <a href={item.href}>
-                        <Icon />
-                        <span>{item.label}</span>
-                    </a>
+                    <li>
+                        <a href={item.href}>
+                            <Icon />
+                            <span>{item.label}</span>
+                        </a>
+                    </li>
                 );
             })
         }
     </ul>
 </div>
+
+<style>
+    svg {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    li {
+        margin-bottom: 0.5rem;
+    }
+
+    a {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        text-decoration: none;
+        color: var(--on-surface);
+    }
+</style>
