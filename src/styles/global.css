@@ -1,0 +1,62 @@
+@font-face {
+    font-family: "Oswald", system-ui, sans-serif;
+    src: url("/fonts/Oswald-VariableFont_wght.ttf") format("ttf");
+    font-weight: 400;
+    font-style: normal;
+}
+
+:root {
+    --primary: #283593;
+    --on-primary: #ffffff;
+    --surface: #fbf8ff;
+    --surface-container: #efedf4;
+    --on-surface: #1b1b21;
+    --on-surface-variant: #777680;
+    --outline: #777680;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    background-color: var(--surface);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+body {
+    font-family: "Oswald", system-ui, sans-serif;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    background-size: 100% 600px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    color: var(--on-surface);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.main-container,
+.wide-container {
+    width: 100%;
+    margin: 0 auto;
+    padding-inline: clamp(1rem, 4vw, 3rem);
+    margin-inline: auto;
+    box-sizing: border-box;
+}
+
+.main-container {
+    max-width: 1000px;
+}
+
+.wide-container {
+    max-width: 1200px;
+}
