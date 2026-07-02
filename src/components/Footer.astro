@@ -5,10 +5,60 @@ import Social from "./Social.astro";
 ---
 
 <footer>
-    <p>Menú</p>
-    <Navigation />
-    <p>Contactanos</p>
-    <Contact />
-    <p>Redes</p>
-    <Social />
+    <div class="wide-container">
+        <div class="menu">
+            <p>Menú</p>
+            <Navigation />
+        </div>
+        <div class="social">
+            <p>Redes</p>
+            <Social class="footer" />
+        </div>
+        <div class="contact">
+            <p>Contactanos</p>
+            <Contact />
+        </div>
+        <div class="map">
+            <p>Mapa</p>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3485.7913845860858!2d-110.97982612421552!3d29.111839662153077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86ce87d7afd6aa45%3A0x3bb7f0076da90732!2sBasyequipos!5e0!3m2!1ses-419!2smx!4v1782886529048!5m2!1ses-419!2smx"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+    </div>
 </footer>
+
+<style>
+    footer {
+        width: 100%;
+    }
+
+    svg {
+        height: 1.5rem;
+        width: 1.5rem;
+    }
+
+    .wide-container {
+        display: grid;
+        align-items: top;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 4rem;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+        font-size: 1rem;
+    }
+
+    .map {
+        grid-column: span 2;
+    }
+
+    .map iframe {
+        width: 100%;
+        height: 15rem;
+        border: 0;
+    }
+</style>
