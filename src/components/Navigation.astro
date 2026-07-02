@@ -1,4 +1,7 @@
 ---
+import MenuIcon from "../assets/icons/menu.svg";
+import CloseIcon from "../assets/icons/x.svg";
+
 const pathname = Astro.url.pathname;
 
 interface NavigationItem {
@@ -9,14 +12,20 @@ interface NavigationItem {
 const navigationItems: NavigationItem[] = [
     { label: "Inicio", href: "/" },
     { label: "Equipos", href: "/equipos" },
-    { label: "Catálogo", href: "/catalogo" },
     { label: "Servicio", href: "/servicio" },
+    { label: "Catálogo", href: "/catalogo" },
     { label: "Nosotros", href: "/nosotros" },
     { label: "Contacto", href: "/contacto" },
 ];
+
+interface Props {
+    class?: string;
+}
+
+const { class: className } = Astro.props;
 ---
 
-<nav>
+<nav class={className}>
     <ul>
         {
             navigationItems.map((item) => (
@@ -34,3 +43,46 @@ const navigationItems: NavigationItem[] = [
         }
     </ul>
 </nav>
+
+<style>
+    ul,
+    li {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    .header-desktop {
+        margin-left: auto;
+    }
+
+    .header-desktop ul {
+        display: flex;
+        gap: 2rem;
+    }
+
+    .header-desktop a {
+        display: block;
+        color: var(--on-surface-variant);
+        transition:
+            color 0.2s ease,
+            font-weight 0.2s ease;
+    }
+
+    .header-desktop a[aria-current="page"] {
+        color: var(--on-surface);
+        font-weight: 600;
+    }
+
+    .header-desktop a:hover {
+        color: var(--on-surface);
+    }
+
+    .footer li {
+        margin-bottom: 0.25rem;
+    }
+</style>
